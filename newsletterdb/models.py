@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
-
+from crum import get_current_user
+from django.shortcuts import redirect
 # Create your models here.
 
 
@@ -25,9 +26,16 @@ class Newsletter(models.Model):
     active = models.BooleanField(default=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
-    # override create method and save only active user is superuser
+    # override save method and save only active user is superuser
     def save(self, *args, **kwargs):
-        if self.author.is_superuser:
-            print('Superuser is author')
+        user = get_current_user()
+        if user.is_superuser:
+            super(Newsletter, self).save(*args, **kwargs)
+        else:
+            print('User is not superuser')
+            try:
+                redirect('/admin/login/')
+            except:
+                pass
 
-        super(Newsletter, self).save(*args, **kwargs)
+

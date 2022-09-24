@@ -9,6 +9,7 @@ Newsletter app is a simple app that written with Django uses PostgreSQL as datab
 - Pillow==9.2.0
 - psycopg2==2.9.3
 - sqlparse==0.4.3
+- django-crum==0.7.9
 - POSTGRESQL
 ### Commands
 - `python3 manage.py createsuperuser` to create superuser (Required to create newsletter)
@@ -17,6 +18,7 @@ Newsletter app is a simple app that written with Django uses PostgreSQL as datab
 - `python3 manage.py runserver` to run server
 
 ### Notes
+- Only **superuser** can create newsletter
 - You can change database settings in `newsletter_app/settings.py`
 - **Before run the server** Create database with name `newsletterdb` or change database name in `newsletter_app/settings.py`  
 - **Before run the server** Create superuser to create newsletter

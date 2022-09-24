@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+MIDDLEWARE += ('crum.CurrentRequestUserMiddleware',)
 
 ROOT_URLCONF = 'newsletter_app.urls'
 

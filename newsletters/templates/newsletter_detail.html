@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <title>{{newsletter.id}}</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
@@ -18,6 +18,10 @@
                 <h2 class="card-title text-center">{{newsletter.title}}</h2>
                   <hr/>
                 <p class="card-text text-center">{{newsletter.content}}</p>
+                  <div class="row">
+                      <span class="text-muted text-center">Created by: {{newsletter.author.username}}</span>
+                  </div>
+
               </div>
             </div>
         </div>

@@ -21,7 +21,13 @@ class Newsletter(models.Model):
     description = models.TextField()
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='static/images/')
-    # image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/')
     active = models.BooleanField(default=True)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+
+    # override create method and save only active user is superuser
+    def save(self, *args, **kwargs):
+        if self.author.is_superuser:
+            print('Superuser is author')
+
+        super(Newsletter, self).save(*args, **kwargs)

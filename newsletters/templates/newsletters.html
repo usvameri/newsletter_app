@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <title>Newsletters</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
@@ -30,7 +30,15 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    {% if newsletters.count < 1 %}
+                                    <tr>
+                                        <td colspan="3">
+                                            <span class="text-danger">No newsletters found</span>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
                                     {% for newsletter in newsletters %}
+                                    {% if newsletter.active %}
                                     <tr>
                                         <td>{{ newsletter.title }}</td>
                                         <td>{{ newsletter.description }}</td>
@@ -38,6 +46,7 @@
                                             <a href="{% url 'newsletter_detail' newsletter.id %}" class="btn btn-primary">Details</a>
                                         </td>
                                     </tr>
+                                    {% endif %}
                                     {% endfor %}
                                     </tbody>
                                 </table>

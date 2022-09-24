@@ -1,0 +1,2 @@
+docker build --tag django-newsletter-app .
+docker run --publish 8000:8000 django-newsletter-app
